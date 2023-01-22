@@ -1,8 +1,10 @@
 from distutils.core import setup
 
 #Read the contents of README.md for Project Description
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+def readme():
+    with open("README.md") as f:
+        README = f.read()
+    return README
 
 setup(
     name = 'Topsis_Taranpreet_102017050',
@@ -10,6 +12,8 @@ setup(
     version = '0.3',
     license='MIT',
     description = 'Topsis implementation',
+    long_description = readme(),
+    long_description_content_type = "text/markdown",
     author = 'Taranpreet Kaur Dhiman',
     author_email = 'taranpreet391@gmail.com',
     url = 'https://github.com/thetarandhiman/Topsis_Taranpreet_102017050',
