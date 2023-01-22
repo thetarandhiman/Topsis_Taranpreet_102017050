@@ -113,12 +113,9 @@ def topsis(input_file, weights, impacts, result_file):
 
     #Reading the input file
     df = pd.read_csv(input_file)
+    df_raw = pd.read_csv(input_file)
     ncols = len(df.columns) - 1
-    # print(ncols)
     
-    #Deleting the first row (headers) in the input file 
-    df = df.drop(0, axis=0)
-
     #Converting the weights and impacts to lists
     weights = weights.split(',')
     impacts = impacts.split(',')
@@ -138,8 +135,12 @@ def topsis(input_file, weights, impacts, result_file):
     #Ranking the alternatives
     df = ranking(df)
 
+    #add the last two columns of df to df_raw
+    df_raw['performance_score'] = df['performance_score']
+    df_raw['ranking'] = df['ranking']
+
     #Writing the output to a file 
-    df.to_csv(result_file, index=False)
+    df_raw.to_csv(result_file, index=False)
 
     #Printing the output
     print("Output : ", result_file)
