@@ -1,5 +1,9 @@
 from distutils.core import setup
 
+#Read the contents of README.md for Project Description
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name = 'Topsis_Taranpreet_102017050',
     packages = ['Topsis_Taranpreet_102017050'],
